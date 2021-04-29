@@ -1,6 +1,6 @@
 # Owl Labs Front-end Project
 
-This project should take you no more than 2-3 hours (note that a few of these items are optional, if you are pressed for time). Please make commits after you complete small-sized chunks of work. We want to see how you work the exericse through your commit diffs. We do not want to see big commits.
+This project should take you no more than 2-3 hours (note that a few of these items are optional, if you are pressed for time). Please make commits after you complete small-sized chunks of work. We want to see how you work the exercise through your commit diffs. We do not want to see big commits.
 
 1. Fork this repo and work from your fork
 2. Before you start working, make a simple commit that acts as a timestamp to begin your 2-3 hour windows.
