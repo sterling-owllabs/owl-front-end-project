@@ -19,7 +19,47 @@
 	height: 150px;
 }
 
-.photo.descr {
+.descr {
 	padding: 15px;
 	text-align: center;
+}
+
+
+/* Camera Dropdown: */
+.camera-dropdown {
+	transition: all 0.2s eas-in-out;
+	overflow: hidden;
+	margin: 15px;
+	background: rgb(245,245,245);
+	border: 1px solid rgb(220,220,220);
+	width: 150px;
+	cursor: pointer;
+}
+ul {
+	margin:0;
+	padding:0;
+	list-style-type: none;
+}
+a {
+	text-decoration: none;
+	color: black;
+}
+.icon {
+	margin: 5px;
+	text-align: center;
+}
+.menu {
+	height: auto;
+}
+.menu li {
+	font-size: 20px;
+	text-transform: uppercase;
+	padding: 5px 5px;
+	border-top: solid 1px rgb(200,200,200);
+}
+.camera-dropdown.closed .menu {
+	height: 0px;
+}
+.camera-dropdown.closed .icon span {
+	transform: rotate(180deg);
 }

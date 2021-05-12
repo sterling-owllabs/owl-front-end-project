@@ -12,6 +12,18 @@
   <button id="refetch">Get latest photos</button>
   <button id="load-pictures-desc">Sort photos by earth date (latest)</button>
   <button id="load-pictures-asc">Sort photos by earth date (oldest)</button>
+  <div id="cameraDrop" class="camera-dropdown closed">
+  	<h2 class="icon">Cameras <span>∆</span></h2>
+  	<ul class="menu">
+  		<li><a onclick="changeCamera('FHAZ')">Front Hazard Avoidance Camera</a></li>
+  		<li><a onclick="changeCamera('RHAZ')">Rear Hazard Avoidance Camera</a></li>
+  		<li><a onclick="changeCamera('MAST')">Mast Camera</a></li>
+  		<li><a onclick="changeCamera('CHEMCAM')">Chemistry and Camera Complex</a></li>
+  		<li><a onclick="changeCamera('MAHLI')">Mars Hand Lens Imager</a></li>
+  		<li><a onclick="changeCamera('MARDI')">Mars Descen Imager</a></li>
+  		<li><a onclick="changeCamera('NAVCAM')">Navigation Camera</a></li>
+  	</ul>
+  </div>
   <div id="photo-list"></div>
   <script type="text/javascript" src="./index.js"></script>
 </body>

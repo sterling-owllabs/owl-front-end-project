@@ -15,7 +15,32 @@ var pageNum = 1;
 var refetchButton = document.getElementById("refetch");
 var sortButtonAsc = document.getElementById("load-pictures-asc");
 var sortButtonDesc = document.getElementById("load-pictures-desc");
+let cameraDrop = document.getElementById("cameraDrop");
 var photoList = document.getElementById("photo-list");
+
+// Dropdown control
+cameraDrop.addEventListener('click', (e) => {
+	if(cameraDrop.classList.contains('closed')) {
+		cameraDrop.classList.remove('closed');
+	} else {
+		cameraDrop.classList.add('closed');
+	}
+});
+
+var changeCamera = function(cam) {
+	console.log("Changing camera to: " + cam);
+	camera = cam;
+	fetch(marsRoverQueryBase + whichRover + '/photos?'
+		+ 'sol=' + solDate
+		+ '&camera=' + camera
+		+ '&page=' + pageNum
+		+ demoKey)
+	.then(function(response) {
+		return response.json();
+	}).then(function(data) {
+		changePhotoDisplay(data.photos, "ASC");
+	})
+}
 
 // Initialize list of photos with basic descriptions.
 fetch(marsRoverQueryBase + whichRover + '/photos?' 
