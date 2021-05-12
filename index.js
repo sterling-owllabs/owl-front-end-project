@@ -12,6 +12,7 @@ var camera = "MAST";
 var pageNum = 1;
 
 //Elements:
+var refetchButton = document.getElementById("refetch");
 var sortButtonAsc = document.getElementById("load-pictures-asc");
 var sortButtonDesc = document.getElementById("load-pictures-desc");
 var photoList = document.getElementById("photo-list");
@@ -33,6 +34,7 @@ var changePhotoDisplay = function(photoData, sort) {
 	sort == "ASC" ? photoData.sort() : photoData.sort(dataSortDesc);
 	// Remove all current photos and replace them with the new set.
 	while(photoList.firstChild) photoList.removeChild(photoList.firstChild);
+	// Add back all new photos whether sorted or from a different page or refetch.
 	for(var i = 0; i < photoData.length; i++) {
 		var curPhoto = document.createElement('div');
 		curPhoto.setAttribute("class", "photo");
@@ -58,7 +60,6 @@ var dataSortDesc = function(a,b) {
 
 // Sort button for getting pictures oldest to newest.
 sortButtonAsc.addEventListener('click', function() {
-	console.log("retrieving sorted data");
 	fetch(marsRoverQueryBase + whichRover + '/photos?' 
 		+ 'sol=' + solDate
 		+ '&camera=' + camera
@@ -73,8 +74,21 @@ sortButtonAsc.addEventListener('click', function() {
 
 // Sort button for getting pictures newest to oldest.
 sortButtonDesc.addEventListener('click', function() {
-	console.log("retrieving sorted data");
 	fetch(marsRoverQueryBase + whichRover + '/photos?' 
+		+ 'sol=' + solDate
+		+ '&camera=' + camera
+		+ '&page=' + pageNum
+		+ demoKey)
+	.then(function(response) {
+		return response.json();
+	}).then(function(data) {
+		changePhotoDisplay(data.photos, "DESC");
+	});
+}, false);
+
+// OPTIONAL: Add button to get latest photos without reloading entire page:
+refetchButton.addEventListener('click', function() {
+	fetch(marsRoverQueryBase + whichRover + '/photos?'
 		+ 'sol=' + solDate
 		+ '&camera=' + camera
 		+ '&page=' + pageNum
