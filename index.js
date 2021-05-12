@@ -12,10 +12,11 @@ var camera = "MAST";
 var pageNum = 1;
 
 //Elements:
-var hwSpan = document.getElementById("StartAssessment");
-var imgButton = document.getElementById("load-pictures");
+var sortButtonAsc = document.getElementById("load-pictures-asc");
+var sortButtonDesc = document.getElementById("load-pictures-desc");
 var photoList = document.getElementById("photo-list");
 
+// Initialize list of photos with basic descriptions.
 fetch(marsRoverQueryBase + whichRover + '/photos?' 
 	+ 'sol=' + solDate
 	+ '&camera=' + camera
@@ -24,39 +25,63 @@ fetch(marsRoverQueryBase + whichRover + '/photos?'
 .then(function(response) {
 	return response.json();
 }).then(function(data) {
-	console.log(data.photos);
-	for(var i = 0; i < data.photos.length; i++) {
+	changePhotoDisplay(data.photos, "ASC");
+});
+
+var changePhotoDisplay = function(photoData, sort) {
+	// Sort data before displaying, ASC (oldest first) by default.
+	sort == "ASC" ? photoData.sort() : photoData.sort(dataSortDesc);
+	// Remove all current photos and replace them with the new set.
+	while(photoList.firstChild) photoList.removeChild(photoList.firstChild);
+	for(var i = 0; i < photoData.length; i++) {
 		var curPhoto = document.createElement('div');
 		curPhoto.setAttribute("class", "photo");
 		var curA = document.createElement('a');
 		curA.setAttribute("id", "img-"+i);
 		var photo = document.createElement('img');
-		photo.src=data.photos[i].img_src;
+		photo.src = photoData[i].img_src;
 		curA.appendChild(photo);
 		var descr = document.createElement('div');
 		descr.setAttribute("class", "descr");
-		descr.innerHTML = "Photo " + (i+1) + " taken by " + whichRover + " rover on " + camera + " camera on " + data.photos[i].earth_date;
+		descr.innerHTML = "Photo " + (i+1) + " taken by " + whichRover + " rover on " + camera + " camera on " + new Date(photoData[i].earth_date);
 
 		curPhoto.appendChild(curA);
 		curPhoto.appendChild(descr);
 		
 		photoList.appendChild(curPhoto);
 	}
-});
+};
 
-// imgButton.addEventListener('click', function() {
-// 	console.log("retrieving data");
-// 	fetch(marsRoverQueryBase + whichRover + '/photos?' 
-// 		+ 'sol=' + solDate
-// 		+ '&camera=' + camera
-// 		+ '&page=' + pageNum
-// 		+ demoKey)
-// 	.then(function(response) {
-// 		return response.json();
-// 	}).then(function(data) {
-// 		var photo = document.createElement('img');
-// 		photo.src=data.photos[0].img_src;
-// 		photoList.appendChild(photo);
-// 		console.log(data.photos[0].img_src);
-// 	});
-// }, false);
+var dataSortDesc = function(a,b) {
+	return new Date(b.earth_date).getTime() - new Date(a.earth_date).getTime();
+}
+
+// Sort button for getting pictures oldest to newest.
+sortButtonAsc.addEventListener('click', function() {
+	console.log("retrieving sorted data");
+	fetch(marsRoverQueryBase + whichRover + '/photos?' 
+		+ 'sol=' + solDate
+		+ '&camera=' + camera
+		+ '&page=' + pageNum
+		+ demoKey)
+	.then(function(response) {
+		return response.json();
+	}).then(function(data) {
+		changePhotoDisplay(data.photos, "ASC");
+	});
+}, false);
+
+// Sort button for getting pictures newest to oldest.
+sortButtonDesc.addEventListener('click', function() {
+	console.log("retrieving sorted data");
+	fetch(marsRoverQueryBase + whichRover + '/photos?' 
+		+ 'sol=' + solDate
+		+ '&camera=' + camera
+		+ '&page=' + pageNum
+		+ demoKey)
+	.then(function(response) {
+		return response.json();
+	}).then(function(data) {
+		changePhotoDisplay(data.photos, "DESC");
+	});
+}, false);
