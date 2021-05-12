@@ -1,1 +1,25 @@
 /* CSS styles go here */
+
+#photo-list {
+
+}
+
+.photo {
+	margin: 5px;
+	border: 1px solid #ccc;
+	float: left;
+	width: 150px;
+}
+.photo:hover {
+	border: 1px solid #777;
+}
+
+.photo img {
+	width: 150px;
+	height: 150px;
+}
+
+.photo.descr {
+	padding: 15px;
+	text-align: center;
+}
