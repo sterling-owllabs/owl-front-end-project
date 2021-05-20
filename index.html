@@ -8,7 +8,39 @@
   <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
-  <!-- HTML work goes here -->
+  <main class="container">
+    <h2 class='container-title'>Blast Off! Welcome to the Home of Mars Rover Photos -- Let's Take a Journey!</h2>
+    <h4 class="step-title">1st Step- Enter a Date (YYYY-MM-DD): </h4>
+      <label for="dateValue"></label>
+      <input type="text" name="dateValue"  id="dateValue" class="step">
+    <div>
+      <h4 class="step-title">2nd Step- Choose a Rover:</h4>
+      <div class="radio-btns step">
+      <label>
+        <input type="radio" id="button1" name="rover" value="curiosity">Curiosity
+      </label>
+      <label>
+        <input type="radio" id="button2" name="rover" value="opportunity">Opportunity
+      </label>
+      <label>
+        <input type="radio" id="button3" name="rover" value="spirit">Spirit
+      </label>
+    </div>
+    </div>
+    <div>
+      <h4 class="step-title">3rd Step- Blast Off!:</h4>
+    <button id="dateInput" onclick="getPhotos()" class="step">Click Here for Photos</button>
+    </div>
+    <h2 id="dataTitle"></h2>
+    <div class="image">
+    <ul>
+      <li>
+        <div id="image-container">
+          <img id="imageId" src="">
+        </div>
+      </li>
+    </ul>
+  </main>
   <script type="text/javascript" src="./index.js"></script>
 </body>
 </html>
