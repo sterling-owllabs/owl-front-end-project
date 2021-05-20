@@ -34,10 +34,12 @@ function displayData(data) {
     document.getElementById("dataTitle").innerHTML = "There are no photos to display";
   } else {
     document.getElementById("dataTitle").innerHTML = "Photo Gallery";
+
     let imageContainer = document.getElementById('image-container');
     imageContainer.innerHTML = "";
+
     for (var i = 0; i < data.photos.length; i++) {
-    imageContainer.innerHTML += '<img src=\"'+data.photos[i].img_src+'\">';
+      imageContainer.innerHTML += '<img src=\"'+data.photos[i].img_src+'\" class=\"rover-image\">';
     }
   }
 }
