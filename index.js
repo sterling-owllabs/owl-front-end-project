@@ -21,8 +21,7 @@ function getPhotos() {
     const data = await response.json()
     displayData(data)
   } catch (error) {
-    console.log(error, 'error')
-    document.getElementById("dataTitle").innerHTML = error;
+    document.getElementById("dataTitle").innerHTML = error + '. Please try again.';
   }
 }
   fetchRoverPhotos()
