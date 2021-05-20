@@ -10,6 +10,28 @@
 <body>
   <main class="container">
     <h2>Home of Mars Rover Photos</h2>
+    <div>Enter date here (YYYY-MM-DD):
+      <label for="dateValue"></label>
+      <input type="text" name="dateValue"  id="dateValue">
+    </div>
+    <div>
+      Choose your Rover:
+      <label>
+        <input type="radio" id="button1" name="rover" value="curiosity">Curiosity
+      </label>
+      <label>
+        <input type="radio" id="button2" name="rover" value="opportunity">Opportunity
+      </label>
+      <label>
+        <input type="radio" id="button3" name="rover" value="spirit">Spirit
+      </label>
+    </div>
+    <button>Click here for photos!</button>
+    <div>
+      <h2>Rover Image Gallery</h2>
+      <div id="image-container">
+      <img id="imageId" src="">
+    </div>
   </main>
   <script type="text/javascript" src="./index.js"></script>
 </body>
