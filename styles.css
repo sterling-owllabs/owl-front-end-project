@@ -5,12 +5,30 @@
   margin-top:10px;
 }
 
-.serv ul{
+.image ul{
   display:flex;
   flex-wrap: wrap;
   padding-left:0;
 }
 
-.serv ul li {
+.image ul li {
   list-style: none;
+}
+
+button {
+  background-color: red;
+  padding:10px;
+  border:none;
+  font-size:14px;
+  font-weight: bold;
+  color:lightgray;
+  cursor:pointer;
+}
+
+.step-title {
+  margin:10px;
+}
+
+.step {
+  margin-left:20px;
 }

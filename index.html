@@ -9,13 +9,13 @@
 </head>
 <body>
   <main class="container">
-    <h2>Home of Mars Rover Photos</h2>
-    <div>Enter date here (YYYY-MM-DD):
+    <h2 class='container-title'>Blast Off! Welcome to the Home of Mars Rover Photos</h2>
+    <h4 class="step-title">1st step- Enter a date(YYYY-MM-DD) here: </h4>
       <label for="dateValue"></label>
-      <input type="text" name="dateValue"  id="dateValue">
-    </div>
+      <input type="text" name="dateValue"  id="dateValue" class="step">
     <div>
-      Choose your Rover:
+      <h4 class="step-title">2nd Step- Choose a Rover:</h4>
+      <div class="radio-btns step">
       <label>
         <input type="radio" id="button1" name="rover" value="curiosity">Curiosity
       </label>
@@ -26,7 +26,11 @@
         <input type="radio" id="button3" name="rover" value="spirit">Spirit
       </label>
     </div>
-    <button id="dateInput" onclick="getPhotos()">Click here for photos</button>
+    </div>
+    <div>
+      <h4 class="step-title">3rd Step- Blast off:</h4>
+    <button id="dateInput" onclick="getPhotos()" class="step">Click Here for Photos</button>
+    </div>
     <h2 id="dataTitle"></h2>
     <div class="image">
     <ul>

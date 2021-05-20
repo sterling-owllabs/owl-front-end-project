@@ -19,10 +19,10 @@ function getPhotos() {
   try {
     const response = await fetch(`${url}`)
     const data = await response.json()
-    console.log(data, 'data')
     displayData(data)
   } catch (error) {
-    console.log(error)
+    console.log(error, 'error')
+    document.getElementById("dataTitle").innerHTML = error;
   }
 }
   fetchRoverPhotos()
@@ -42,9 +42,4 @@ function displayData(data) {
       imageContainer.innerHTML += '<img src=\"'+data.photos[i].img_src+'\" class=\"rover-image\">';
     }
   }
-}
-
-function reset () {
-  // come back and add functionality to clear form after success call
-  console.log('reset form after successful ')
 }
