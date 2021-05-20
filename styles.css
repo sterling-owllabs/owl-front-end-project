@@ -1,3 +1,32 @@
+html {
+  background: gray;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.container-title {
+  margin-left: 10px;
+}
+
+button {
+  background-color: red;
+  padding:10px;
+  border:none;
+  font-size:14px;
+  font-weight: bold;
+  color:lightgray;
+  cursor:pointer;
+}
+
+.step-title {
+  margin:10px;
+  text-decoration: underline;
+}
+
+.step {
+  margin-left:20px;
+  margin-bottom: 20px;
+}
+
 .rover-image {
   width:300px;
   height: 300px;
@@ -13,22 +42,4 @@
 
 .image ul li {
   list-style: none;
-}
-
-button {
-  background-color: red;
-  padding:10px;
-  border:none;
-  font-size:14px;
-  font-weight: bold;
-  color:lightgray;
-  cursor:pointer;
-}
-
-.step-title {
-  margin:10px;
-}
-
-.step {
-  margin-left:20px;
 }
