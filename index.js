@@ -26,7 +26,6 @@ function getPhotos() {
   }
 }
   fetchRoverPhotos()
-  // document.getElementById("dateValue").value = "";
 }
 
 function displayData(data) {
