@@ -1,5 +1,4 @@
 function getPhotos() {
-  console.log('in here')
   let date = document.getElementById('dateValue').value;
   let btn1IsChecked = document.getElementById('button1').checked;
   let btn2IsChecked = document.getElementById('button2').checked;
@@ -31,10 +30,15 @@ function getPhotos() {
 }
 
 function displayData(data) {
-  let imageContainer = document.getElementById('image-container');
-  imageContainer.innerHTML = "";
-  for (var i = 0; i < data.photos.length; i++) {
+  if(data.photos.length === 0) {
+    document.getElementById("dataTitle").innerHTML = "There are no photos to display";
+  } else {
+    document.getElementById("dataTitle").innerHTML = "Photo Gallery";
+    let imageContainer = document.getElementById('image-container');
+    imageContainer.innerHTML = "";
+    for (var i = 0; i < data.photos.length; i++) {
     imageContainer.innerHTML += '<img src=\"'+data.photos[i].img_src+'\">';
+    }
   }
 }
 
